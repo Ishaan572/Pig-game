@@ -77,10 +77,11 @@ document.getElementById('current-1').textContent = '0';
 document.querySelector('.player-0-panel').classList.toggle('active');
 document.querySelector('.player-1-panel').classList.toggle('active');
 document.querySelector(".dice").style.display = 'none';
-
-
-if(scores[activePlayer] >= 100){
-  document.querySelector('#name-' + activePlayer).textContent('Winner');
+if(scores[activePlayer] >= 10){
+  document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+            document.querySelector('.dice').style.display = 'none';
+            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
 }
 }
 //Check if player won
