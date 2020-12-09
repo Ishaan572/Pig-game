@@ -101,7 +101,7 @@ document.getElementById('current-1').textContent = '0';
 document.querySelector('.player-0-panel').classList.toggle('active');
 document.querySelector('.player-1-panel').classList.toggle('active');
 document.querySelector(".dice").style.display = 'none';
-if(scores[nonac] >= 20){
+if(scores[nonac] >= 100){
   document.querySelector('#name-' + nonac).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + nonac + '-panel').classList.add('winner');
