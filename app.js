@@ -107,6 +107,10 @@ if(scores[nonac] >= 100){
             document.querySelector('.player-' + nonac + '-panel').classList.add('winner');
             document.querySelector('.player-' + nonac + '-panel').classList.remove('active');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active')
+  document.querySelector('.player-' + nonac
+
+ + '-panel').classList.remove('active')
+  
             gamePlaying = false;
 }}
 }
