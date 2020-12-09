@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores , roundScore , activePlayer , rollBtn , holdBtn , newBtn;
+var scores , roundScore , activePlayer , rollBtn , holdBtn , newBtn , gamePlaying;
 function init() {
   scores = [0, 0];
   activePlayer = 0;
@@ -56,7 +56,7 @@ function changePlayer(){//Next player
 
 
 function rollDice(){
-//Random number
+ if (gamePlaying){//Random number
  var dice =Math.floor(Math.random()*6 + 1);
 //Display result
 var diceImg = document.querySelector(".dice");
@@ -73,14 +73,15 @@ else{
 changePlayer();
 
 }
-}
-
+}}
+var nonac = 0;
 
 
 
 
 function holdDice (){
-//Add current score to global score
+if (gamePlaying){
+  //Add current score to global score
 scores[activePlayer] += roundScore;
 document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer] ;
 //Update UI
@@ -88,18 +89,26 @@ if(activePlayer == 1){
   activePlayer = 0;
 }
 else{activePlayer = 1}
+if(activePlayer == 1){
+  nonac = 0;
+}
+else{nonac = 1}
+
+
 roundScore = 0;
 document.getElementById('current-0').textContent = '0'; 
 document.getElementById('current-1').textContent = '0'; 
 document.querySelector('.player-0-panel').classList.toggle('active');
 document.querySelector('.player-1-panel').classList.toggle('active');
 document.querySelector(".dice").style.display = 'none';
-if(scores[activePlayer] >= 100){
-  document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
+if(scores[nonac] >= 20){
+  document.querySelector('#name-' + nonac).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
-            document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
-            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
-}
+            document.querySelector('.player-' + nonac + '-panel').classList.add('winner');
+            document.querySelector('.player-' + nonac + '-panel').classList.remove('active');
+            document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active')
+            gamePlaying = false;
+}}
 }
 function newGame(){
 init();
